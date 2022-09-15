@@ -1,16 +1,16 @@
 import { mergeAttributes, Node } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
-import YouTubeComponent from './YouTubeComponent'
+import NestedEditorComponent from './NestedEditorComponent'
 
 const CountUpdate = Node.create({
-  name: 'youtube',
+  name: 'nestedEditor',
 
   group: 'block',
 
   addAttributes() {
     return {
-      src: {
+      editorId: {
         default: null
       },
     }
@@ -19,7 +19,7 @@ const CountUpdate = Node.create({
   parseHTML() {
     return [
       {
-        tag: 'div.youtube-embed iframe',
+        tag: 'div.nestedEditor',
       },
     ]
   },
@@ -29,7 +29,7 @@ const CountUpdate = Node.create({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(YouTubeComponent)
+    return ReactNodeViewRenderer(NestedEditorComponent)
   },
 })
 

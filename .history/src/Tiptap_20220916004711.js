@@ -7,7 +7,7 @@ import MenuBar from './Menubar'
 import EditableBlock from './Extension'
 import CountUpdate from './CountUpdate'
 import YouTubeNode from './YouTubeNode'
-import NestedEditorNode from './NestedEditorNode' 
+
 
 const Tiptap = () => {
   const editor = useEditor({
@@ -15,8 +15,7 @@ const Tiptap = () => {
       StarterKit,
       EditableBlock,
       CountUpdate,
-      YouTubeNode,
-      NestedEditorNode
+      YouTubeNode
     ],
     content: `<p>
     This is still the text editor you’re used to, but enriched with node views.
@@ -28,10 +27,10 @@ const Tiptap = () => {
   <p>
     Did you see that? That’s a React component. We are really living in the future.
   </p>
-  <div class="nestedEditor"></div>
   <div class="youtube-embed">
     <iframe />
   </div>
+  <div class="nestedEditor" />
   `,
   })
 

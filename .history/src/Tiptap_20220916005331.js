@@ -28,7 +28,9 @@ const Tiptap = () => {
   <p>
     Did you see that? That’s a React component. We are really living in the future.
   </p>
-  <div class="nestedEditor"></div>
+  <div class="nestedEditor">
+    <p>This is editable.</p>
+  </div>
   <div class="youtube-embed">
     <iframe />
   </div>
