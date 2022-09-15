@@ -38,9 +38,10 @@ export default function NestedEditorComponent() {
     <NodeViewWrapper>
       <div className="nestedEditor">
         <MenuBar editor={editor1} />
-        <EditorContent editor={editor1} />
-        <MenuBar editor={editor2} />
-        <EditorContent editor={editor2} />
+        <div>
+          <EditorContent editor={editor1} />
+          <EditorContent editor={editor2} />
+        </div>
       </div>
     </NodeViewWrapper>   
   )
