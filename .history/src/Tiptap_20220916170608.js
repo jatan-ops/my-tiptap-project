@@ -10,28 +10,6 @@ import YouTubeNode from './YouTubeNode.ts'
 import NestedEditorNode from './NestedEditorNode.ts' 
 
 const Tiptap = () => {
-
-  let initializeData = localStorage.getItem('tiptap-json')
-
-  if(initializeData === null) {
-    initializeData = {
-      "type":'doc',
-      "content": [
-        {
-          "type":"paragraph",
-          "content": [
-            {
-              "type": "text", 
-              "text": ""
-            }
-          ]
-        }
-      ]
-    }
-  } else {
-    initializeData = JSON.parse(initializeData)
-  }
-  
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -40,21 +18,26 @@ const Tiptap = () => {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: initializeData
+    content: `<p>
+    This is still the text editor you’re used to, but enriched with node views.
+  </p>
+  <react-component>
+    <p>This is editable.</p>
+  </react-component>
+  <count-update></count-update>
+  <p>
+    Did you see that? That’s a React component. We are really living in the future.
+  </p>
+  <div class="youtube-embed">
+    <iframe src="https://www.youtube.com/embed/GVEouiQakO8" />
+  </div>
+  `,
   })
 
   return (
     <>
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
-      <button
-        onClick={() => {
-          const json = editor.getJSON()
-          localStorage.setItem('tiptap-json',JSON.stringify(json))
-        }}
-      >
-        save
-      </button>
     </>
   )
 }

@@ -3,6 +3,14 @@ import { ReactNodeViewRenderer } from '@tiptap/react'
 
 import YouTubeComponent from './YouTubeComponent'
 
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    youtube: {      
+      setYoutubeVideo: (any) => ReturnType
+    }
+  }
+}
+
 const CountUpdate = Node.create({
   name: 'youtube',
 
@@ -11,7 +19,7 @@ const CountUpdate = Node.create({
   addAttributes() {
     return {
       src: {
-        default: null
+        default: ''
       },
     }
   },
@@ -22,6 +30,18 @@ const CountUpdate = Node.create({
         tag: 'div.youtube-embed iframe',
       },
     ]
+  },
+
+  addCommands() {
+    return {
+      setYoutubeVideo: any => ({ commands }) => {
+
+        return commands.insertContent({
+          type: this.name,
+          attrs: {src: ''}
+        })
+      }
+    }
   },
 
   renderHTML({ HTMLAttributes }) {

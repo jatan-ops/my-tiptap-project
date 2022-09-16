@@ -5,30 +5,21 @@ import StarterKit from '@tiptap/starter-kit'
 import EditableBlock from './Extension'
 import CountUpdate from './CountUpdate'
 import YouTubeNode from './YouTubeNode.ts'
-import NestedEditorNode from './NestedEditorNode.ts' 
 
 import MenuBar from './Menubar'
 
-export default function NestedEditorComponent(props) {
-
-  console.log('initial Data: ', props.node.attrs.editorContent)
+export default function NestedEditorComponent() {
 
   const editor1 = useEditor({
     extensions: [
       StarterKit,
       EditableBlock,
       CountUpdate,
-      YouTubeNode,
-      NestedEditorNode
+      YouTubeNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[0]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[0] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: `<p>
+    This is nested editor
+  </p>`
   })
 
   const editor2 = useEditor({
@@ -36,17 +27,11 @@ export default function NestedEditorComponent(props) {
       StarterKit,
       EditableBlock,
       CountUpdate,
-      YouTubeNode,
-      NestedEditorNode
+      YouTubeNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[1]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[1] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: `<p>
+    This is third editor
+  </p>`
   })
 
   return(

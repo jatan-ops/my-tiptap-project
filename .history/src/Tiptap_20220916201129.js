@@ -32,6 +32,7 @@ const Tiptap = () => {
     initializeData = JSON.parse(initializeData)
   }
   
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -50,6 +51,7 @@ const Tiptap = () => {
       <button
         onClick={() => {
           const json = editor.getJSON()
+          console.log('tiptap json: ', json)
           localStorage.setItem('tiptap-json',JSON.stringify(json))
         }}
       >

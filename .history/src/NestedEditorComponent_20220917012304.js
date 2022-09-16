@@ -31,6 +31,8 @@ export default function NestedEditorComponent(props) {
     },
   })
 
+  editor1.on('update',onUpdateEditor1)
+
   const editor2 = useEditor({
     extensions: [
       StarterKit,
@@ -48,6 +50,8 @@ export default function NestedEditorComponent(props) {
       })
     },
   })
+
+  editor2.on('update',onUpdateEditor2)
 
   return(
     <NodeViewWrapper>

@@ -10,28 +10,6 @@ import YouTubeNode from './YouTubeNode.ts'
 import NestedEditorNode from './NestedEditorNode.ts' 
 
 const Tiptap = () => {
-
-  let initializeData = localStorage.getItem('tiptap-json')
-
-  if(initializeData === null) {
-    initializeData = {
-      "type":'doc',
-      "content": [
-        {
-          "type":"paragraph",
-          "content": [
-            {
-              "type": "text", 
-              "text": ""
-            }
-          ]
-        }
-      ]
-    }
-  } else {
-    initializeData = JSON.parse(initializeData)
-  }
-  
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -40,7 +18,20 @@ const Tiptap = () => {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: initializeData
+    content: {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Wow, this editor instance exports its content as JSON."
+            }
+          ]
+        }
+      ]
+    }
   })
 
   return (
@@ -50,7 +41,8 @@ const Tiptap = () => {
       <button
         onClick={() => {
           const json = editor.getJSON()
-          localStorage.setItem('tiptap-json',JSON.stringify(json))
+          console.log('tiptap json: ', json)
+          localStorage.setItem('tiptap-json',json)
         }}
       >
         save

@@ -32,6 +32,7 @@ const Tiptap = () => {
     initializeData = JSON.parse(initializeData)
   }
   
+
   const editor = useEditor({
     extensions: [
       StarterKit,

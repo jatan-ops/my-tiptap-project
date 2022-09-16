@@ -9,9 +9,7 @@ import NestedEditorNode from './NestedEditorNode.ts'
 
 import MenuBar from './Menubar'
 
-export default function NestedEditorComponent(props) {
-
-  console.log('initial Data: ', props.node.attrs.editorContent)
+export default function NestedEditorComponent() {
 
   const editor1 = useEditor({
     extensions: [
@@ -21,14 +19,9 @@ export default function NestedEditorComponent(props) {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[0]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[0] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: `<p>
+    This is nested editor
+  </p>`
   })
 
   const editor2 = useEditor({
@@ -39,14 +32,9 @@ export default function NestedEditorComponent(props) {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[1]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[1] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: `<p>
+    This is third editor
+  </p>`
   })
 
   return(

@@ -115,13 +115,8 @@ const MenuBar = ({ editor }) => {
       <button onClick={() => editor.chain().focus().redo().run()}>
         redo
       </button>
-      <button onClick={() => editor.chain().focus().setYoutubeVideo().run()} >
+      <button onClick={() => editor.chain().focus().setYoutubeVideo({src:null}).run()} >
         Youtube
-      </button>
-      <button
-        onClick={() => {editor.chain().focus().setNestedEditor().run()}}
-      >
-        2 columns
       </button>
     </>
   )

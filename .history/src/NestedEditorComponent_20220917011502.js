@@ -13,6 +13,22 @@ export default function NestedEditorComponent(props) {
 
   console.log('initial Data: ', props.node.attrs.editorContent)
 
+  const onUpdateEditor1 = () => {
+   const temp = props.node.attrs.editorContent
+   temp[0] = JSON.stringify(editor1.getJSON()) 
+   props.updateAttributes({
+    editorContent: temp
+   })
+  }
+
+  const onUpdateEditor2 = () => {
+    const temp = props.node.attrs.editorContent
+    temp[1] = JSON.stringify(editor2.getJSON()) 
+    props.updateAttributes({
+      editorContent: temp
+    })
+  }
+
   const editor1 = useEditor({
     extensions: [
       StarterKit,
@@ -21,15 +37,10 @@ export default function NestedEditorComponent(props) {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[0]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[0] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: JSON.parse(props.node.attrs.editorContent[0])
   })
+
+  editor1.on('update',onUpdateEditor1)
 
   const editor2 = useEditor({
     extensions: [
@@ -39,15 +50,10 @@ export default function NestedEditorComponent(props) {
       YouTubeNode,
       NestedEditorNode
     ],
-    content: JSON.parse(props.node.attrs.editorContent[1]),
-    onUpdate:({ editor }) => {
-      const temp = props.node.attrs.editorContent
-      temp[1] = JSON.stringify(editor.getJSON()) 
-      props.updateAttributes({
-        editorContent: temp
-      })
-    },
+    content: JSON.parse(props.node.attrs.editorContent[1])
   })
+
+  editor2.on('update',onUpdateEditor2)
 
   return(
     <NodeViewWrapper>
