@@ -5,13 +5,12 @@ import StarterKit from '@tiptap/starter-kit'
 import EditableBlock from './Extension'
 import CountUpdate from './CountUpdate'
 import YouTubeNode from './YouTubeNode.ts'
-
 import NestedEditorNode from './NestedEditorNode.ts' 
 import ThreeColumnNested from './ThreeColumnNested.ts'
 
 import MenuBar from './Menubar'
 
-export default function NestedEditorComponent(props) {
+export default function ThreeColumnNestedComponent(props) {
 
   const editor1 = useEditor({
     extensions: [
@@ -51,7 +50,26 @@ export default function NestedEditorComponent(props) {
     },
   })
 
-  return(
+  const editor3 = useEditor({
+    extensions: [
+      StarterKit,
+      EditableBlock,
+      CountUpdate,
+      YouTubeNode,
+      NestedEditorNode,
+      ThreeColumnNested
+    ],
+    content: JSON.parse(props.node.attrs.editorContent[2]),
+    onUpdate:({ editor }) => {
+      const temp = props.node.attrs.editorContent
+      temp[2] = JSON.stringify(editor.getJSON()) 
+      props.updateAttributes({
+        editorContent: temp
+      })
+    },
+  })
+
+  return (
     <NodeViewWrapper>
       <div className="nestedEditor" style={{display:'flex'}}>
         <div>
@@ -61,6 +79,10 @@ export default function NestedEditorComponent(props) {
         <div>
           <MenuBar editor={editor2} />
           <EditorContent editor={editor2} />
+        </div>
+        <div>
+          <MenuBar editor={editor3} />
+          <EditorContent editor={editor3} />
         </div>
       </div>
     </NodeViewWrapper>   
