@@ -6,7 +6,7 @@ import MenuBar from './Menubar'
 
 import EditableBlock from './Extension'
 import CountUpdate from './CountUpdate'
-import YouTubeNode from './YouTubeNode.ts'
+import YouTubeNode from './YouTubeNode.js'
 import NestedEditorNode from './NestedEditorNode.ts' 
 import ThreeColumnNested from './ThreeColumnNested.ts'
 
@@ -23,7 +23,7 @@ const Tiptap = () => {
           "content": [
             {
               "type": "text", 
-              "text": ""
+              "text": "hello world"
             }
           ]
         }

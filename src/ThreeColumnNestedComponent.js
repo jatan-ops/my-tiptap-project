@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit'
 
 import EditableBlock from './Extension'
 import CountUpdate from './CountUpdate'
-import YouTubeNode from './YouTubeNode.ts'
+import YouTubeNode from './YouTubeNode.js'
 import NestedEditorNode from './NestedEditorNode.ts' 
 import ThreeColumnNested from './ThreeColumnNested.ts'
 

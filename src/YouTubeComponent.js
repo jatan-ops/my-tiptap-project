@@ -17,7 +17,11 @@ export default function YouTubeComponent(props) {
         }} 
       />
       <div className="youtube-embed">
-        <iframe src={urlInput} width="420" height="315" />
+        <iframe 
+          src={urlInput} 
+          width="420" 
+          height="315" 
+        />
       </div>
     </NodeViewWrapper>     
   )
